@@ -1,6 +1,8 @@
 using System;
+using System.Reflection;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Cell
 {
@@ -8,10 +10,13 @@ namespace Cell
     {
         [SerializeField] private SpriteRenderer _animatedObject;
         [SerializeField] private ParticleSystem _starsEffect;
-        public Vector3 bounceScale;
-        public float bounceDuration;
-        public Ease bounceEase;
-
+        
+        [SerializeField]private Vector3 _valueBounceScale;
+        [SerializeField] private float _bounceDuration;
+        [SerializeField]private Vector3 _cellBounceScale;
+        [SerializeField]private Vector3 _minRotation;
+        [SerializeField]private Vector3 _maxRotation;
+        
         private Vector3 originalScale;
         private Sequence _bounceSequence;
         private Sequence _victorySequence;
@@ -33,8 +38,8 @@ namespace Cell
             transform.localScale = Vector3.zero;
 
             _bounceSequence = DOTween.Sequence();
-            _bounceSequence.Append(transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.4f).SetEase(Ease.Linear));
-            _bounceSequence.Append(transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.InOutBack));
+            _bounceSequence.Append(transform.DOScale(_cellBounceScale, _bounceDuration).SetEase(Ease.Linear));
+            _bounceSequence.Append(transform.DOScale(Vector3.one, _bounceDuration).SetEase(Ease.InOutBack));
             _bounceSequence.Play();
         }
         public void ShowVictory(Action AnimationEnded)
@@ -42,9 +47,9 @@ namespace Cell
             _starsEffect.gameObject.SetActive(true);
 
             _victorySequence = DOTween.Sequence();
-            _victorySequence.Append(_animatedObject.transform.DOScale(bounceScale, bounceDuration).SetEase(bounceEase));
-            _victorySequence.Append(_animatedObject.transform.DOScale(originalScale, bounceDuration).SetEase(bounceEase));
-            _victorySequence.Append(_animatedObject.transform.DOScale(originalScale, bounceDuration / 2)
+            _victorySequence.Append(_animatedObject.transform.DOScale(_valueBounceScale, _bounceDuration).SetEase(Ease.InOutBack));
+            _victorySequence.Append(_animatedObject.transform.DOScale(originalScale, _bounceDuration).SetEase(Ease.InOutBack));
+            _victorySequence.Append(_animatedObject.transform.DOScale(originalScale, _bounceDuration / 2)
                     .SetEase(Ease.Linear))
                 .OnComplete(() => OnVictoryAnimationEnded(AnimationEnded));
 
@@ -60,8 +65,8 @@ namespace Cell
         public void ShowDefend()
         {
             _defendSequence = DOTween.Sequence();
-            _defendSequence.Append(_animatedObject.transform.DORotate(new Vector3(0f, 0f, 20f), 0.1f));
-            _defendSequence.Append(_animatedObject.transform.DORotate(new Vector3(0f, 0f, -20f), 0.2f));
+            _defendSequence.Append(_animatedObject.transform.DORotate(_maxRotation, 0.1f));
+            _defendSequence.Append(_animatedObject.transform.DORotate(_minRotation, 0.2f));
             _defendSequence.Append(_animatedObject.transform.DORotate(Vector3.zero, 0.1f));
 
             _defendSequence.Play();

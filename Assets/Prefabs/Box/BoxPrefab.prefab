@@ -5161,6 +5161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animatedObject: {fileID: 5903651745757179722}
   _starsEffect: {fileID: 1915483414828883524}
-  bounceScale: {x: 5.5, y: 5.5, z: 5.5}
-  bounceDuration: 0.5
-  bounceEase: 28
+  _valueBounceScale: {x: 5, y: 5, z: 5}
+  _bounceDuration: 0.4
+  _cellBounceScale: {x: 1.1, y: 1.1, z: 1.1}
+  _minRotation: {x: 0, y: 0, z: -20}
+  _maxRotation: {x: 0, y: 0, z: 20}

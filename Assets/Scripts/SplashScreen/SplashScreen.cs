@@ -13,6 +13,10 @@ namespace SplashScreen
     {
         [SerializeField] private Slider _loadingSlider;
         [SerializeField] private SpriteRenderer _splashScreenView;
+
+        [SerializeField] private float _splashScreenFadeDuration = 0.5f;
+        [SerializeField] private float _delayBeforNextLevelSpawn = 0.3f;
+        [SerializeField] private float _loadingDelay = 0.007f;
         
         private LevelSpawner _levelSpawner;
         private RightAnswerView _rightAnswerView;
@@ -36,10 +40,10 @@ namespace SplashScreen
         private IEnumerator LoadGame(bool wasGameReset)
         {
             _splashScreenView.gameObject.SetActive(true);
-            _splashScreenView.DOFade(1f, 0.5f);
+            _splashScreenView.DOFade(1f, _splashScreenFadeDuration);
             if (wasGameReset)
             {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(_delayBeforNextLevelSpawn);
                 _levelSpawner.Spawn();
             }
             
@@ -50,7 +54,7 @@ namespace SplashScreen
                 _levelSpawner.Spawn();
             }
 
-            _splashScreenView.DOFade(0f, 0.5f)
+            _splashScreenView.DOFade(0f, _splashScreenFadeDuration)
                 .OnComplete(OnGameLoaded);
             _loadingSlider.value = 0;
             gameObject.SetActive(false);
@@ -61,7 +65,7 @@ namespace SplashScreen
             while (_loadingSlider.value != 100)
             {
                 _loadingSlider.value += 1;
-                yield return new WaitForSeconds(0.007f);
+                yield return new WaitForSeconds(_loadingDelay);
             }
         }
 
