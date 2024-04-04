@@ -61,7 +61,7 @@ namespace SplashScreen
             while (_loadingSlider.value != 100)
             {
                 _loadingSlider.value += 1;
-                yield return new WaitForSeconds(0.002f);
+                yield return new WaitForSeconds(0.007f);
             }
         }
 
