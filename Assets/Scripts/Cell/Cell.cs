@@ -39,7 +39,7 @@ namespace Cell
                 return;
             }
             
-            _animator.ShowDefend();
+            _animator.ShowDefeat();
         }
     }
 }

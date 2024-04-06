@@ -20,7 +20,7 @@ namespace Cell
         private Vector3 originalScale;
         private Sequence _bounceSequence;
         private Sequence _victorySequence;
-        private Sequence _defendSequence;
+        private Sequence _defeatSequence;
 
         private void Start()
         {
@@ -31,7 +31,7 @@ namespace Cell
         {
             _bounceSequence.Kill();
             _victorySequence.Kill();
-            _defendSequence.Kill();
+            _defeatSequence.Kill();
         }
         public void ShowBounce()
         {
@@ -62,14 +62,14 @@ namespace Cell
             AnimationEnded?.Invoke();
         }
 
-        public void ShowDefend()
+        public void ShowDefeat()
         {
-            _defendSequence = DOTween.Sequence();
-            _defendSequence.Append(_animatedObject.transform.DORotate(_maxRotation, 0.1f));
-            _defendSequence.Append(_animatedObject.transform.DORotate(_minRotation, 0.2f));
-            _defendSequence.Append(_animatedObject.transform.DORotate(Vector3.zero, 0.1f));
+            _defeatSequence = DOTween.Sequence();
+            _defeatSequence.Append(_animatedObject.transform.DORotate(_maxRotation, 0.1f));
+            _defeatSequence.Append(_animatedObject.transform.DORotate(_minRotation, 0.2f));
+            _defeatSequence.Append(_animatedObject.transform.DORotate(Vector3.zero, 0.1f));
 
-            _defendSequence.Play();
+            _defeatSequence.Play();
         }
         
     }
