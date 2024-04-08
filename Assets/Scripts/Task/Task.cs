@@ -5,20 +5,20 @@ namespace Task
 {
     public class Task
     {
-        public TaskObject RightAnswer { get; }
-        private List<TaskObject> _answerOptions;
+        public CardData RightAnswer { get; }
+        private List<CardData> _answerOptions;
 
-        public Task(TaskObject rightAnswer, List<TaskObject> answerOptions)
+        public Task(CardData rightAnswer, List<CardData> answerOptions)
         {
             RightAnswer = rightAnswer;
             _answerOptions = answerOptions;
         }
 
-        public TaskObject GetAnswerOption()
+        public CardData GetAnswerOption()
         {
-            var randomObject = _answerOptions[Random.Range(0, _answerOptions.Count)];
-            _answerOptions.Remove(randomObject);
-            return randomObject;
+            var randomCard = _answerOptions[Random.Range(0, _answerOptions.Count)];
+            _answerOptions.Remove(randomCard);
+            return randomCard;
         }
     }
 }

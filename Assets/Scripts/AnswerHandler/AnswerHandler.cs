@@ -4,7 +4,6 @@ using VContainer;
 namespace AnswerHandler
 {
     public class AnswerHandler
-
     {
         private event Action LevelCompleted;
         private string _rightAnswer;

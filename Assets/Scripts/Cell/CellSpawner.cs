@@ -55,8 +55,8 @@ namespace Cell
         {
             foreach (var cell in _spawnedCells)
             {
-                var taskObject = task.GetAnswerOption();
-                cell.Initialize(taskObject.Sprite, taskObject.Identifire);
+                var cardData = task.GetAnswerOption();
+                cell.Initialize(cardData.Sprite, cardData.Identifire);
                 
                 if (isFirstLevel)
                 {

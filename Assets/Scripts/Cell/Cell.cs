@@ -21,7 +21,6 @@ namespace Cell
             _identifire = identifire;
             _cellView.UpdateView(value);
         }
-
         public void Reset()
         {
             _cellView.Reset();
@@ -38,7 +37,6 @@ namespace Cell
                 _animator.ShowVictory(_answerHandler.OnLevelCompleted);
                 return;
             }
-            
             _animator.ShowDefeat();
         }
     }

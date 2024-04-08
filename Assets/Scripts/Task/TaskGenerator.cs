@@ -6,70 +6,67 @@ namespace Task
 {
     public class TaskGenerator : MonoBehaviour
     {
-        [SerializeField] private TaskObjectConfig[] _taskObjectConfig;
+        [SerializeField] private CardDataConfig[] _cardDataConfigs;
 
-        private List<TaskObject> _availableObjects = new List<TaskObject>();
-        private List<TaskObject> _usedObjects = new List<TaskObject>();
+        private readonly List<CardData> _availableCards = new List<CardData>();
+        private readonly List<CardData> _usedCards = new List<CardData>();
 
         private void GetaAvailableObjects(int randomIndex)
         {
-            var taskObjectConfig = _taskObjectConfig[randomIndex];
-            foreach (var taskObject in taskObjectConfig.TaskObjects)
+            var cardDataConfig = _cardDataConfigs[randomIndex];
+            foreach (var cardData in cardDataConfig.CardData)
             {
-                _availableObjects.Add(taskObject);
+                _availableCards.Add(cardData);
             }
         }
 
         public Task Generate(int answersCount)
         {
-            var randomIndex = Random.Range(0, _taskObjectConfig.Length);
+            var randomIndex = Random.Range(0, _cardDataConfigs.Length);
             GetaAvailableObjects(randomIndex);
 
             var rightAnswer = GetRightAnswer();
-            List<TaskObject> answerOptions = new List<TaskObject>();
+            List<CardData> answerOptions = new List<CardData>();
 
             answerOptions.Add(rightAnswer);
             answersCount--;
             
             for (int i = 0; i < answersCount; i++)
             {
-                var randomOption = GetRandomObject();
+                var randomOption = GetRandomCard();
                 if (answerOptions.Contains(randomOption))
                 {
                     i--;
                     continue;
                 }
-                
                 answerOptions.Add(randomOption);
             }
-
             Reset();
             return new Task(rightAnswer, answerOptions);
         }
 
-        private TaskObject GetRandomObject()
+        private CardData GetRandomCard()
         {
-            var taskObject = _availableObjects[Random.Range(0, _availableObjects.Count)];
-            _availableObjects.Remove(taskObject);
-            return taskObject;
+            var cardData = _availableCards[Random.Range(0, _availableCards.Count)];
+            _availableCards.Remove(cardData);
+            return cardData;
         }
 
-        private TaskObject GetRightAnswer(
+        private CardData GetRightAnswer(
             )
         {
-            var answer = GetRandomObject();
-            if (!_usedObjects.Contains(answer))
+            var answer = GetRandomCard();
+            if (!_usedCards.Contains(answer))
             {
-                _usedObjects.Add(answer);
+                _usedCards.Add(answer);
                 return answer;
             }
-            
             return GetRightAnswer();
         }
 
         private void Reset()
         {
-            _availableObjects.Clear();
+            _availableCards.Clear();
         }
     }
 }

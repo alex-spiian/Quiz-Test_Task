@@ -15,7 +15,6 @@ namespace SplashScreen
         [SerializeField] private SpriteRenderer _splashScreenView;
 
         [SerializeField] private float _splashScreenFadeDuration = 0.5f;
-        [SerializeField] private float _delayBeforNextLevelSpawn = 0.3f;
         [SerializeField] private float _loadingDelay = 0.007f;
         
         private LevelSpawner _levelSpawner;
@@ -41,18 +40,9 @@ namespace SplashScreen
         {
             _splashScreenView.gameObject.SetActive(true);
             _splashScreenView.DOFade(1f, _splashScreenFadeDuration);
-            if (wasGameReset)
-            {
-                yield return new WaitForSeconds(_delayBeforNextLevelSpawn);
-                _levelSpawner.Spawn();
-            }
-            
+         
             yield return StartCoroutine(StartLoading());
-
-            if (!wasGameReset)
-            {
-                _levelSpawner.Spawn();
-            }
+            _levelSpawner.Spawn();
 
             _splashScreenView.DOFade(0f, _splashScreenFadeDuration)
                 .OnComplete(OnGameLoaded);

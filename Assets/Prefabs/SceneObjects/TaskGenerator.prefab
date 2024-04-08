@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aeac749290847278507ee9b7bf2e0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _taskObjectConfig:
+  _cardDataConfigs:
   - {fileID: 11400000, guid: 63324f97ce6544ff2ba4ab1f75588bc6, type: 2}
   - {fileID: 11400000, guid: ffd4a10b6a691434f9ecd89e168b86e7, type: 2}
