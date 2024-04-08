@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e828bac7f05348f981c5aefd083237f7, type: 3}
   m_Name: Digits
   m_EditorClassIdentifier: 
-  <TaskObjects>k__BackingField:
+  <CardData>k__BackingField:
   - <Identifire>k__BackingField: 1
     <Sprite>k__BackingField: {fileID: 1422184923334757970, guid: 0da0f21cf7671427484cc6c9fbdd7ce7, type: 3}
   - <Identifire>k__BackingField: 2
