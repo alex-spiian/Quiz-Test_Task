@@ -262,7 +262,7 @@ MonoBehaviour:
   - {fileID: 1887345402}
   - {fileID: 1459929763}
   _taskGenerator: {fileID: 384968745}
-  _cellSpawner: {fileID: 1731498228}
+  cardSpawner: {fileID: 1731498228}
   _colorProvider: {fileID: 161884163}
   _rightAnswerView: {fileID: 1939918768}
   _levelSpawner: {fileID: 1459025548}
@@ -1151,6 +1151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _darkEffect: {fileID: 1292963913}
   _restartButton: {fileID: 1136213226}
+  _maxFAdeValue: 0.5
+  _scalingDuration: 0.4
+  _fadingDuration: 1
 --- !u!4 &1459929765
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,6 +1499,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loadingSlider: {fileID: 275122254}
   _splashScreenView: {fileID: 367290741}
+  _splashScreenFadeDuration: 0.5
+  _loadingDelay: 0.007
 --- !u!1 &1939918766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1757,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4549520943380485762, guid: 8f193a0a252aa482a83c6591edf9f638, type: 3}
       propertyPath: m_Name
-      value: CellSpawner
+      value: CardSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 4549520943380485764, guid: 8f193a0a252aa482a83c6591edf9f638, type: 3}
       propertyPath: m_RootOrder
@@ -1798,6 +1803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4549520943380485765, guid: 8f193a0a252aa482a83c6591edf9f638, type: 3}
+      propertyPath: cardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e2e2fa3f32304e9498072652618f4bc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f193a0a252aa482a83c6591edf9f638, type: 3}
 --- !u!1001 &7467682407287157641

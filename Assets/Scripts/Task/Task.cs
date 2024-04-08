@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Task
+namespace Card
 {
     public class Task
     {

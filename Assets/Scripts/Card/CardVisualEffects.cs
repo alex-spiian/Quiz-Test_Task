@@ -4,9 +4,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Cell
+namespace Card
 {
-    public class CellAnimator : MonoBehaviour
+    public class CardVisualEffects : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _animatedObject;
         [SerializeField] private ParticleSystem _starsEffect;

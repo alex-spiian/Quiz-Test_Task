@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Task
+namespace Card
 {
     public class TaskGenerator : MonoBehaviour
     {

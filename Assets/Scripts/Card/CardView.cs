@@ -2,9 +2,9 @@ using Provider;
 using UnityEngine;
 using VContainer;
 
-namespace Cell
+namespace Card
 {
-    public class CellView : MonoBehaviour
+    public class CardView : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _background;
         [SerializeField] private SpriteRenderer _value;

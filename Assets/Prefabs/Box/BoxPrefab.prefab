@@ -5131,8 +5131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edec8fcef1064f65b6b290dd97ee95d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cellView: {fileID: 4622484225725094080}
-  _animator: {fileID: 3757114342031512916}
+  _cardView: {fileID: 4622484225725094080}
+  _cardVisualEffects: {fileID: 3757114342031512916}
 --- !u!114 &4622484225725094080
 MonoBehaviour:
   m_ObjectHideFlags: 0

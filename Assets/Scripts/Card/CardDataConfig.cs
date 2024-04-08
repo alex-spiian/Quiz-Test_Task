@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Task
+namespace Card
 {
     
     [CreateAssetMenu(fileName = "CardDataConfig", menuName = "ScriptableObject/CardDataConfig", order = 2)]

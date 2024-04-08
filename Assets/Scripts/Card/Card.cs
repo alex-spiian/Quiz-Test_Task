@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 
-namespace Cell
+namespace Card
 {
-    public class Cell : MonoBehaviour
+    public class Card : MonoBehaviour
     {
-        [SerializeField] private CellView _cellView;
-        [SerializeField] private CellAnimator _animator;
+        [SerializeField] private CardView _cardView;
+        [SerializeField] private CardVisualEffects _cardVisualEffects;
         
         private AnswerHandler.AnswerHandler _answerHandler;
         private string _identifire;
@@ -16,28 +17,28 @@ namespace Cell
         {
             _answerHandler = answerHandler;
         }
-        public void Initialize(Sprite value, string identifire)
+        public void Initialize(Sprite sprite, string identifire)
         {
             _identifire = identifire;
-            _cellView.UpdateView(value);
+            _cardView.UpdateView(sprite);
         }
         public void Reset()
         {
-            _cellView.Reset();
-            _animator.Reset();
+            _cardView.Reset();
+            _cardVisualEffects.Reset();
         }
         public void OnGameStarted()
         {
-            _animator.ShowBounce();
+            _cardVisualEffects.ShowBounce();
         }
         private void OnMouseUp()
         {
             if (_answerHandler.IsAnswerCorrect(_identifire))
             {
-                _animator.ShowVictory(_answerHandler.OnLevelCompleted);
+                _cardVisualEffects.ShowVictory(_answerHandler.OnLevelCompleted);
                 return;
             }
-            _animator.ShowDefeat();
+            _cardVisualEffects.ShowDefeat();
         }
     }
 }

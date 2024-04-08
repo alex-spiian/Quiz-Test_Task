@@ -1,6 +1,5 @@
 using System;
-using Cell;
-using Task;
+using Card;
 using UnityEngine;
 using VContainer;
 
@@ -15,19 +14,19 @@ namespace Level
         private GameEndHandler _gameEndHandler;
         private AnswerHandler.AnswerHandler _answerHandler;
         private TaskGenerator _taskGenerator;
-        private CellSpawner _cellSpawner;
+        private CardSpawner _cardSpawner;
         private PositionsGenerator.PositionsGenerator _positionsGenerator;
         private int _currentIndex;
 
         [Inject]
-        public void Construct(TaskGenerator taskGenerator, CellSpawner cellSpawner,
+        public void Construct(TaskGenerator taskGenerator, CardSpawner cardSpawner,
             PositionsGenerator.PositionsGenerator positionsGenerator, AnswerHandler.AnswerHandler answerHandler,
             GameEndHandler gameEndHandler)
         {
             _gameEndHandler = gameEndHandler;
             _answerHandler = answerHandler;
             _taskGenerator = taskGenerator;
-            _cellSpawner = cellSpawner;
+            _cardSpawner = cardSpawner;
             _positionsGenerator = positionsGenerator;
         }
         public void Spawn()
@@ -40,7 +39,7 @@ namespace Level
             _answerHandler.Initialize(task.RightAnswer.Identifire, OnLevelCompleted);
             var positions = _positionsGenerator.Get(rows, columns, spacing, Vector3.one);
             
-            _cellSpawner.Spawn(rows * columns, task, positions, _currentIndex == 0);
+            _cardSpawner.Spawn(rows * columns, task, positions, _currentIndex == 0);
         }
 
         private void OnLevelCompleted()
@@ -58,7 +57,7 @@ namespace Level
         public void Reset()
         {
             _currentIndex = 0;
-            _cellSpawner.Reset();
+            _cardSpawner.Reset();
             LevelReset?.Invoke();
         }
     }

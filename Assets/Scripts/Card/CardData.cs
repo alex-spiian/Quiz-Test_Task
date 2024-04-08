@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Task
+namespace Card
 {
     [Serializable]
     public class CardData
